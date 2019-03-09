@@ -1,0 +1,5 @@
+FROM gliderlabs/alpine
+ENTRYPOINT ["sh"]
+MAINTAINER koenigphil@gmail.com
+
+RUN apk update && apk add bind-tools net-tools curl nmap jq tcpdump

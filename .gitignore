@@ -1,0 +1,6 @@
+## @root: avoid volume data
+vol/
+
+## @build: avoid .docker secret file
+.docker/
+.docker

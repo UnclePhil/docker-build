@@ -1,0 +1,8 @@
+version: '2'
+services:
+  mynodered:
+    image: 'nodered/node-red-docker:slim'
+    ports:
+      - '1880:1880'
+    volumes:
+      - 'c:/users/pkoenig/documents/dockervol/red:/data'
