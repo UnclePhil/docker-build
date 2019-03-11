@@ -1,0 +1,16 @@
+FROM node:10-alpine
+MAINTAINER koenigphil@gmail.com
+
+# Install gitbook
+RUN set -x && \
+  apk add --update curl git  && \
+  npm install -g gitbook-cli && \
+  rm /var/cache/apk/*  && \
+  mkdir /gitbook && \
+  gitbook install 2.2.0
+
+WORKDIR /gitbook
+
+EXPOSE 4000
+
+CMD ["gitbook", "serve", "/gitbook"]

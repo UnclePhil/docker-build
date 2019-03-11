@@ -1,4 +1,4 @@
-FROM alpine:3.1
+FROM gliderlabs/alpine
 
 ENV HUGO_VERSION 0.54.0
 MAINTAINER koenigphil@gmail.com
