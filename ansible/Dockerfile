@@ -10,6 +10,7 @@ RUN builddeps=' \
 		gcc \
 		' \
 	&& apk --no-cache add \
+	openssh-client \
 	ca-certificates \
 	python \
 	py-paramiko \
