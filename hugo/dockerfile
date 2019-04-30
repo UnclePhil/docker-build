@@ -1,6 +1,6 @@
 FROM gliderlabs/alpine
 
-ENV HUGO_VERSION 0.54.0
+ENV HUGO_VERSION 0.55.4 
 MAINTAINER koenigphil@gmail.com
 
 # Install HUGO
