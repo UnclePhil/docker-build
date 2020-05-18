@@ -4,3 +4,5 @@ vol/
 ## @build: avoid .docker secret file
 .docker/
 .docker
+
+.vscode
