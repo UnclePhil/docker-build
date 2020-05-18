@@ -32,7 +32,6 @@ build: ## Build the container
 	docker build -t $(APP_NAME) .
 
 build-nc: ## Build the container without caching
-    docker rmi ${BASEIMG}
 	docker build --no-cache -t $(APP_NAME) .
 
 # Run the container 
@@ -51,11 +50,11 @@ release: build-nc publish ## Make a release by building and publishing the `{ver
 publish: repo-login publish-latest publish-version ## Publish the `{version}` ans `latest` tagged containers to ECR
 
 publish-latest: tag-latest ## Publish the `latest` taged container to ECR
-	@echo 'publish latest to $(DREPO)'
+	@echo 'publish latest to $(DOCKER_REPO)'
 	docker push $(DREPO)/$(APP_NAME):latest
 
 publish-version: tag-version ## Publish the `{version}` taged container to ECR
-	@echo 'publish $(VERSION) to $(DREPO)'
+	@echo 'publish $(VERSION) to $(DOCKER_REPO)'
 	docker push $(DREPO)/$(APP_NAME):$(VERSION)
 
 # Docker tagging
