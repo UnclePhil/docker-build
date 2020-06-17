@@ -29,20 +29,10 @@ help: ## This help.
 # DOCKER TASKS
 # Build the container
 build: ## Build the container
-	docker build -t $(APP_NAME) .
+	docker build --rm --force-rm -t $(APP_NAME) .
 
 build-nc: ## Build the container without caching
-	docker build --no-cache -t $(APP_NAME) .
-
-# Run the container 
-run: ## Run container on port configured in `config.env`
-	docker run -i -t --rm -p=$(APP_PORT):$(APP_PORT) --name="$(APP_NAME)" $(APP_NAME)
-
-
-up: build run ## Run container on port configured in `config.env` (Alias to run)
-
-stop: ## Stop and remove a running container
-	docker stop $(APP_NAME); docker rm $(APP_NAME)
+	docker build --no-cache --rm --force-rm -t $(APP_NAME) .
 
 release: build-nc publish ## Make a release by building and publishing the `{version}` ans `latest` tagged containers to ECR
 
@@ -74,6 +64,4 @@ tag-version: ## Generate container `latest` tag
 repo-login: 
 	echo ${DPW}| docker login -u $(DUSER) --password-stdin
 
-version: ## Output the current version
-	@echo $(VERSION)
 	

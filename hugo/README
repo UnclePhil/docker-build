@@ -1,0 +1,9 @@
+This dockerfile and make file 
+- acquire an existing version of the klakegg/hugo 
+- set some label on it to validate
+- save it as unclephil/hugo image
+
+
+I'll do this because as a good paranoid sysadmin, I run only docker images tested and validate or created by myself
+
+

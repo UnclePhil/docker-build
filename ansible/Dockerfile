@@ -1,5 +1,6 @@
  FROM alpine
  LABEL maintainer="ph.koenig@koenig.ph"
+ ARG ANSIBLE_VERSION=v2.9.7 
 
 RUN apk --no-cache add \
         py-crypto py-yaml py-jinja2  py-paramiko py-setuptools git py2-pip perl py-simplejson rsync \
@@ -13,7 +14,7 @@ RUN apk --no-cache add \
 && mkdir /opt/ansible/ -p \
 && git clone http://github.com/ansible/ansible.git /opt/ansible/ansible
 WORKDIR /opt/ansible/ansible
-RUN git checkout v2.9.7 \
+RUN git checkout ${ANSIBLE_VERSION}\
 && git submodule update --init
 
 ENV PATH /opt/ansible/ansible/bin:/bin:/usr/bin:/sbin:/usr/sbin

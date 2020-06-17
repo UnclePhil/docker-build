@@ -28,23 +28,18 @@ help: ## This help.
 
 # DOCKER TASKS
 # Build the container
+get:   ## acquire source image
+    docker pull ${SRC_IMG}
+
 build: ## Build the container
-	docker build -t $(APP_NAME) .
+	docker build --rm --force-rm --build-arg SRC_IMG=$(SRC_IMG) -t $(APP_NAME) .
 
 build-nc: ## Build the container without caching
-	docker build --no-cache -t $(APP_NAME) .
-
-# Run the container 
-run: ## Run container on port configured in `config.env`
-	docker run -i -t --rm -p=$(APP_PORT):$(APP_PORT) --name="$(APP_NAME)" $(APP_NAME)
-
-
-up: build run ## Run container on port configured in `config.env` (Alias to run)
-
-stop: ## Stop and remove a running container
-	docker stop $(APP_NAME); docker rm $(APP_NAME)
+	docker build --rm --force-rm --no-cache --build-arg SRC_IMG=$(SRC_IMG) -t $(APP_NAME) .
 
 release: build-nc publish ## Make a release by building and publishing the `{version}` ans `latest` tagged containers to ECR
+
+acquire: get build-nc publish ## Make a release by building and publishing the `{version}` ans `latest` tagged containers to ECR
 
 # Docker publish
 publish: repo-login publish-latest publish-version ## Publish the `{version}` ans `latest` tagged containers to ECR
