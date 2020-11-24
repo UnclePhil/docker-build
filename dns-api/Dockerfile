@@ -1,7 +1,11 @@
 # First build the application
 FROM gliderlabs/alpine
 RUN apk --no-cache add go git musl-dev
-RUN go get -u github.com/skx/dns-api-go
+## RUN go get -u github.com/skx/dns-api-go
+RUN git clone https://github.com/skx/dns-api-go
+WORKDIR ./dns-api-go
+RUN go install
+
 
 # Now put it in a container without all the build tools
 FROM gliderlabs/alpine

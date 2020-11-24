@@ -1,6 +1,6 @@
  FROM alpine
  LABEL maintainer="ph.koenig@koenig.ph"
- ARG ANSIBLE_VERSION=v2.9.7 
+ ARG ANSIBLE_VERSION=stable-2.10
 
 RUN apk --no-cache add \
         py-crypto py-yaml py-jinja2  py-paramiko py-setuptools git py2-pip perl py-simplejson rsync \
