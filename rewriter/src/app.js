@@ -12,7 +12,8 @@ var xrl  = require('url');
 var winston = require('winston');
 
 // logger
-var logger = new (winston.Logger)({
+var logger = winston.createLogger({
+  defaultMeta: { service: 'rewriter' },
   transports: [
     new (winston.transports.Console)({'timestamp':true})
   ]
@@ -58,7 +59,8 @@ var grep = function(what, where, callback){
 
 //read the config directory
 //load all files alphabetically
-//inject data in object {"mysource":"mydestination","mysource2":"mydestination2"}
+// inject data in object {"mysource":"mydestination","mysource2":"mydestination2"}
+// key-value principe : this can be replaced by any KV db
 //
 function update_configdir() {
   configlist={};
