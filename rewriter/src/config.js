@@ -1,7 +1,7 @@
 module.exports = {
   blacklistfile:'/src/data/blacklist/iplist',
   filespath: '/src/data/rules/',
-  ipsrv : "127.0.0.1"
+  ipsrv : "127.0.0.1",
   port : 8080,
   resturl : '/rwconfx',
   testurl : '/rwtst',

@@ -21,7 +21,7 @@ var config = require('./config.js');
 var configlist = {};
 var iplist    = [];
 
-//watch config files , with this rewriter never stopp working
+//watch config files , with this rewriter never stop working
 // if config files are not present, server is crashing
 //
 fs.watch(config.blacklistfile, function(c,p) { update_iplist(); });
@@ -152,7 +152,7 @@ http.createServer(function(request, response) {
     }
     //host in list and rewrited
     else {
-      sloc = newloc.rewrite('$1',url+search);
+      sloc = newloc.replace('$1',url+search);
       console.log(ip + "," + request.method + "," + host+url +",301,"+sloc);
       response.writeHead(301,{'Location':idn.toASCII(sloc), 'Expires': (new Date).toGMTString()});
       response.end();
@@ -161,7 +161,7 @@ http.createServer(function(request, response) {
   // info url
   else if (url == config.infourl){
     oldhost = params || "";
-    oldloc = idn.toUnicode(oldhost);
+    oldloc = idn.toUnicode(oldhost); 
     newloc = configlist[oldloc];
     //host not in list
     if (newloc=="" || newloc==null) {
